@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8">
+  <title>Recompensa ta</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 40px;
+      background-color: #f9f9f9;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1 id="mesaj">Se încarcă...</h1>
+    <p id="scanari"></p>
+  </div>
+
+  <script>
+    const key = 'scanariInghetata';
+    let scanari = localStorage.getItem(key);
+    scanari = scanari ? parseInt(scanari) : 0;
+    scanari++;
+
+    localStorage.setItem(key, scanari);
+
+    let mesaj = '';
+    switch (scanari) {
+      case 1:
+        mesaj = 'Felicitări, mai ai de achiziționat 5 înghețate!';
+        break;
+      case 2:
+        mesaj = 'Felicitări, mai ai de achiziționat 4 înghețate!';
+        break;
+      case 3:
+        mesaj = 'Felicitări, mai ai de achiziționat 3 înghețate!';
+        break;
+      case 4:
+        mesaj = 'Felicitări, mai ai de achiziționat 2 înghețate!';
+        break;
+      case 5:
+        mesaj = 'Felicitări, mai ai de achiziționat o înghețată!';
+        break;
+      case 6:
+        mesaj = 'Felicitări, ai câștigat o înghețată gratis!';
+        break;
+      default:
+        mesaj = 'Ai câștigat deja o înghețată! Repornește ciclul cu un alt cod.';
+    }
+
+    document.getElementById('mesaj').innerText = mesaj;
+    document.getElementById('scanari').innerText = `Număr de scanări cu acest device: ${scanari}`;
+  </script>
+</body>
+</html>
